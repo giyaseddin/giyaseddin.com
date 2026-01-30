@@ -2,7 +2,7 @@ import type { Site, Page, Links, Socials } from "@types"
 
 // Global
 export const SITE: Site = {
-  TITLE: "Giyas Bayrak | AI & NLP Engineer",
+  TITLE: "Giyas Bayrak",
   DESCRIPTION: "Personal website of Giyaseddin Bayrak (غياث): Senior AI Researcher specializing in NLP, Large Language Models, and Deep Learning for specialized domains.",
   AUTHOR: "Giyaseddin Bayrak",
   KEYWORDS: "Giyaseddin Bayrak, Giyas Bayrak, Ghyath Alfarkh, AI Engineer, NLP Researcher, Medical NLP, Machine Learning, Transformers, Enterprise Chatbots, Arabic NLP, Turkish Law NLP, Deep Learning, R&D",
