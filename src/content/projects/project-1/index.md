@@ -1,16 +1,17 @@
 ---
-title: "Project One"
-summary: "Lorem ipsum dolor sit amet"
-date: "Mar 18 2022"
+title: "Labeeb the Bot"
+summary: "An autonomous, multi-channel AI assistant designed to provide 24/7 customer support by learning directly from business documentation."
+date: "Jul 01 2023"
 draft: false
 tags:
-- Astro
-- Javascript
-- Typescript
-- Tailwind
-- SolidJs
-demoUrl: https://astro-sphere-demo.vercel.app
-repoUrl: https://github.com/markhorn-dev/astro-sphere
+- Python
+- CustomerSupport
+- RAG
+- LLM
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+Labeeb is an intelligent, document-aware conversational agent built to bridge the gap between static business knowledge and active customer engagement. Unlike traditional rule-based bots, Labeeb utilizes advanced Natural Language Processing (NLP) and Retrieval-Augmented Generation (RAG) to ingest company-specific documentation and provide accurate, context-aware responses in real-time.
+
+The project focuses on seamless multi-channel integration, allowing businesses to deploy the bot across platforms like WhatsApp and Telegram. Key technical highlights include automated data-driven learning pipelines, 24/7 autonomous operation without manual management, and a robust architecture designed for high-concurrency enterprise environments. By moving from "passive search" to "proactive assistance," Labeeb ensures that customer queries are resolved instantly using the most up-to-date business data available.
+
+#### Check out the website [labeebot.com](https://labeebot.com/)
