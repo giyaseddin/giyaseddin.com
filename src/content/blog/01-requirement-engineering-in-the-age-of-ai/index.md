@@ -1,6 +1,6 @@
 ---
 title: "Requirement Engineering in the Age of AI: Why Product Fit Comes Before Intelligence"
-summary: "AI demos are easy. Production systems are not. In AI startups, disciplined requirement engineering — not model capability — determines whether a system achieves real product fit or becomes an expensive demo."
+summary: "AI demos are easy. Production systems are not. In AI startups, disciplined requirement engineering (not model capability) determines whether a system achieves real product fit or becomes an expensive demo."
 date: "Feb 23 2026"
 draft: false
 tags:
@@ -25,7 +25,7 @@ The model wasn’t the problem.
 
 The requirements were.
 
-In AI startups, we often assume that better models lead to better products. But in practice, the systems that survive production are not the ones with the most intelligence — they’re the ones built on disciplined requirement engineering.
+In AI startups, we often assume that better models lead to better products. But in practice, the systems that survive production are not the ones with the most intelligence; they’re the ones built on disciplined requirement engineering.
 
 In fact:
 
@@ -56,7 +56,7 @@ The real question is rarely asked:
 
 **Do we fully understand the workflow we’re augmenting?**
 
-When requirement engineering is weak, AI doesn’t fix the ambiguity — it amplifies it.
+When requirement engineering is weak, AI doesn’t fix the ambiguity; it amplifies it.
 
 ---
 
@@ -71,7 +71,7 @@ A useful way to think about AI systems is as a layered stack:
 
 ![Layered AI stack diagram](./layered-ai-stack.jpg)
 
-AI belongs at the top — not at the base.
+AI belongs at the top; not at the base.
 
 If the human process is undefined,  
 the digital workflow is unstable.  
@@ -84,7 +84,7 @@ AI behavior drifts.
 
 You don’t install smart automation before wiring the house.
 
-AI should clarify, guide, and reduce friction — not define the process itself.
+AI should clarify, guide, and reduce friction; not define the process itself.
 
 ---
 
@@ -126,7 +126,7 @@ Now contrast this with a process-first approach:
 In this model, AI doesn’t invent policy.  
 It strengthens the weak points.
 
-That difference determines whether the system stabilizes — or churns for months.
+That difference determines whether the system stabilizes, or churns for months.
 
 ---
 
@@ -221,7 +221,7 @@ If engagement drops,
 If trust declines,  
 If users slow down,  
 
-Then the integration failed — even if the demo impressed everyone.
+Then the integration failed, even if the demo impressed everyone.
 
 ---
 
@@ -272,7 +272,7 @@ Document:
 - Escalation logic
 - Region-specific variations
 
-AI should attach to structure — not substitute for it.
+AI should attach to structure, not substitute for it.
 
 ---
 
