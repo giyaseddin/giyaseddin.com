@@ -6,6 +6,7 @@ export type Page = {
 export interface Site extends Page {
   AUTHOR: string
   KEYWORDS: string
+  GTM_ID: string
 }
 
 export type Links = {

@@ -93,4 +93,5 @@
   }
 
   document.addEventListener('astro:after-swap', initBG);
+  document.addEventListener('DOMContentLoaded', initBG);
   initBG();

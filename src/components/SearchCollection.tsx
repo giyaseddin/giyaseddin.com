@@ -4,6 +4,7 @@ import Fuse from "fuse.js"
 import ArrowCard from "@components/ArrowCard"
 import { cn } from "@lib/utils"
 import SearchBar from "@components/SearchBar"
+import { FUSE_OPTIONS } from "@lib/search"
 
 type Props = {
   entry_name: string
@@ -19,12 +20,7 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
   const [collection, setCollection] = createSignal<CollectionEntry<'blog'>[]>([])
   const [descending, setDescending] = createSignal(false);
 
-  const fuse = new Fuse(coerced, {
-    keys: ["slug", "data.title", "data.summary", "data.tags"],
-    includeMatches: true,
-    minMatchCharLength: 2,
-    threshold: 0.4,
-  })
+  const fuse = new Fuse(coerced, FUSE_OPTIONS)
 
   createEffect(() => {
     const filtered = (query().length < 2

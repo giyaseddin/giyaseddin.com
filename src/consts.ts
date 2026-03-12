@@ -6,6 +6,7 @@ export const SITE: Site = {
   DESCRIPTION: "Personal website of Giyaseddin Bayrak (غياث): Senior AI Researcher specializing in NLP, Large Language Models, and Deep Learning for specialized domains.",
   AUTHOR: "Giyaseddin Bayrak",
   KEYWORDS: "Giyaseddin Bayrak, Giyas Bayrak, Ghyath Alfarkh, AI Engineer, NLP Researcher, Medical NLP, Machine Learning, Transformers, Enterprise Chatbots, Arabic NLP, Turkish Law NLP, Deep Learning, R&D",
+  GTM_ID: "GTM-W7QWT3RM",
 }
 
 // Work Page
@@ -17,13 +18,13 @@ export const WORK: Page = {
 // Blog Page
 export const BLOG: Page = {
   TITLE: "Blog",
-  DESCRIPTION: "A narrative of your professional journey and the problems you solve.",
+  DESCRIPTION: "Thoughts on AI engineering, NLP research, LLM systems, and lessons learned building production-grade machine learning products.",
 }
 
-// Projects Page 
+// Projects Page
 export const PROJECTS: Page = {
   TITLE: "Projects",
-  DESCRIPTION: "Projects I have worked on.",
+  DESCRIPTION: "A selection of research and engineering projects spanning NLP, LLMs, agentic AI systems, and applied machine learning.",
 }
 
 // Search Page

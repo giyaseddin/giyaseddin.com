@@ -63,8 +63,9 @@ import Container from "@components/Container.astro"
               {
                 SOCIALS.map((SOCIAL) => (
                   <a 
-                    href={SOCIAL.HREF} 
-                    target="_blank" 
+                    href={SOCIAL.HREF}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`} 
                     class="group size-10 rounded-full p-2 items-center justify-center hover:bg-black/5 dark:hover:bg-white/20  blend"
                   >

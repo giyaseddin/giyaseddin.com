@@ -3,6 +3,7 @@ import { createEffect, createSignal } from "solid-js"
 import Fuse from "fuse.js"
 import ArrowCard from "@components/ArrowCard"
 import SearchBar from "@components/SearchBar"
+import { FUSE_OPTIONS } from "@lib/search"
 
 type Props = {
   data: CollectionEntry<"blog">[]
@@ -12,12 +13,7 @@ export default function Search({ data }: Props) {
   const [query, setQuery] = createSignal("")
   const [results, setResults] = createSignal<CollectionEntry<"blog">[]>([])
 
-  const fuse = new Fuse(data, {
-    keys: ["slug", "data.title", "data.summary", "data.tags"],
-    includeMatches: true,
-    minMatchCharLength: 2,
-    threshold: 0.4,
-  })
+  const fuse = new Fuse(data, FUSE_OPTIONS)
 
   createEffect(() => {
     if (query().length < 2) {

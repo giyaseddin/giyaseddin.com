@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import { formatDate, readingTime } from "@lib/utils"
+import { SITE } from "@consts"
 
 type Props = {
   entry: CollectionEntry<"projects"> | CollectionEntry<"blog">
@@ -12,7 +13,22 @@ const { title, summary, date } = data
 
 const demoUrl = collection === "projects" ? data.demoUrl : null
 const repoUrl = collection === "projects" ? data.repoUrl : null
+
+const articleUrl = new URL(`/${collection}/${entry.slug}`, Astro.site)
 ---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": summary,
+  "datePublished": date.toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": SITE.AUTHOR,
+  },
+  "url": articleUrl,
+})} />
 
 <div>
   <a href={`/${collection}`} class="group w-fit p-1.5 gap-1.5 text-sm flex items-center border rounded hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-colors duration-300 ease-in-out">
@@ -47,7 +63,7 @@ const repoUrl = collection === "projects" ? data.repoUrl : null
   {(demoUrl || repoUrl) && 
   <div class="mt-4 flex flex-wrap gap-2">
     {demoUrl && 
-      <a href={demoUrl} target="_blank" class="group flex gap-2 items-center px-3 py-1.5 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend">
+      <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="group flex gap-2 items-center px-3 py-1.5 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend">
         <svg class="size-4">
           <use href="/ui.svg#globe" class="fill-current group-hover:fill-black group-hover:dark:fill-white blend"/>
         </svg>
@@ -57,7 +73,7 @@ const repoUrl = collection === "projects" ? data.repoUrl : null
       </a>
     }
     {repoUrl && 
-      <a href={repoUrl} target="_blank" class="group flex gap-2 items-center px-3 py-1.5 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend">
+      <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="group flex gap-2 items-center px-3 py-1.5 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend">
         <svg class="size-4">
           <use href="/ui.svg#link" class="fill-current group-hover:fill-black group-hover:dark:fill-white blend"/>
         </svg>

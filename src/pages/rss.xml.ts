@@ -7,8 +7,8 @@ type Context = {
 }
 
 export async function GET(context: Context) {
-	const posts = await getCollection("blog")
-  const projects = await getCollection("projects")
+	const posts = (await getCollection("blog")).filter((p) => !p.data.draft)
+  const projects = (await getCollection("projects")).filter((p) => !p.data.draft)
 
   const items = [...posts, ...projects]
 
@@ -22,9 +22,8 @@ export async function GET(context: Context) {
       title: item.data.title,
       description: item.data.summary,
       pubDate: item.data.date,
-      link: item.slug.startsWith("blog")
-        ? `/blog/${item.slug}/`
-        : `/projects/${item.slug}/`,
+      author: SITE.AUTHOR,
+      link: `/${item.collection}/${item.slug}/`,
     })),
   })
 }

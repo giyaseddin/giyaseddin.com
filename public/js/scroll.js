@@ -7,4 +7,13 @@ function onScroll() {
   }
 }
 
-document.addEventListener("scroll", onScroll)
+let ticking = false;
+document.addEventListener("scroll", () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      onScroll();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});

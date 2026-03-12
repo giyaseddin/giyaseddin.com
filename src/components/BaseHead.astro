@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from "astro:transitions"
+import { SITE, SOCIALS } from "@consts"
 
 interface Props {
   title: string
@@ -10,6 +11,9 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 const { title, description, image = "/open-graph.jpg" } = Astro.props
+
+const twitterSocial = SOCIALS.find((s) => s.NAME === "Twitter")
+const twitterHandle = twitterSocial ? `@${twitterSocial.TEXT}` : ""
 ---
 
 <!-- Global Metadata -->
@@ -19,7 +23,7 @@ const { title, description, image = "/open-graph.jpg" } = Astro.props
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="MyWebSite" />
+<meta name="apple-mobile-web-app-title" content={SITE.TITLE} />
 <link rel="manifest" href="/site.webmanifest" />
 <meta name="generator" content={Astro.generator} />
 
@@ -33,6 +37,7 @@ const { title, description, image = "/open-graph.jpg" } = Astro.props
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="keywords" content={SITE.KEYWORDS} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -40,6 +45,8 @@ const { title, description, image = "/open-graph.jpg" } = Astro.props
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content={SITE.TITLE} />
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -47,6 +54,8 @@ const { title, description, image = "/open-graph.jpg" } = Astro.props
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:creator" content={twitterHandle} />
+<meta name="twitter:site" content={twitterHandle} />
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
@@ -60,12 +69,21 @@ const { title, description, image = "/open-graph.jpg" } = Astro.props
 <script is:inline src="/js/animate.js"></script>
 <script defer is:inline src="/js/copy.js"></script>
 
+<!-- JSON-LD: Person -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": SITE.AUTHOR,
+  "url": Astro.site,
+  "description": SITE.DESCRIPTION,
+})} />
+
 <!-- Google Tag Manager -->
-<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script is:inline define:vars={{ gtmId: SITE.GTM_ID }}>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W7QWT3RM');</script>
+})(window,document,'script','dataLayer',gtmId);</script>
 <!-- End Google Tag Manager -->
 
 <!-- <ViewTransitions  /> -->
