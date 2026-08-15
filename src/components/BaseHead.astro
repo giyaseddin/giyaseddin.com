@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions"
 import { SITE, SOCIALS } from "@consts"
 
 interface Props {
@@ -86,15 +85,3 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer',gtmId);</script>
 <!-- End Google Tag Manager -->
 
-<!-- <ViewTransitions  /> -->
-
-<script>
-  import type { TransitionBeforeSwapEvent } from "astro:transitions/client"
-  document.addEventListener("astro:before-swap", (e) =>
-    [
-      ...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll(
-        "link[as=\"font\"]"
-      ),
-    ].forEach((link) => link.remove())
-  )
-</script>

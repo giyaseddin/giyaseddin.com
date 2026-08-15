@@ -1,11 +1,10 @@
 import { defineConfig } from "astro/config"
-import mdx from "@astrojs/mdx"
 import sitemap from "@astrojs/sitemap"
-import tailwind from "@astrojs/tailwind"
 import solidJs from "@astrojs/solid-js"
 
+// Tailwind 3 runs through postcss.config.mjs, so no Astro integration is needed.
 // https://astro.build/config
 export default defineConfig({
   site: "https://giyaseddin.com/",
-  integrations: [mdx(), sitemap(), solidJs(), tailwind({ applyBaseStyles: false })],
+  integrations: [sitemap(), solidJs()],
 })

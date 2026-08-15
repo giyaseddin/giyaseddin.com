@@ -14,7 +14,7 @@ const { title, summary, date } = data
 const demoUrl = collection === "projects" ? data.demoUrl : null
 const repoUrl = collection === "projects" ? data.repoUrl : null
 
-const articleUrl = new URL(`/${collection}/${entry.slug}`, Astro.site)
+const articleUrl = new URL(`/${collection}/${entry.id}`, Astro.site)
 ---
 
 <script is:inline type="application/ld+json" set:html={JSON.stringify({
@@ -51,7 +51,7 @@ const articleUrl = new URL(`/${collection}/${entry.slug}`, Astro.site)
       <svg class="size-5 stroke-current">
         <use href="/ui.svg#book-open"/>
       </svg>
-      {readingTime(body)}
+      {readingTime(body ?? "")}
     </div>
   </div>
   <h1 class="text-3xl font-semibold text-black dark:text-white mt-2">

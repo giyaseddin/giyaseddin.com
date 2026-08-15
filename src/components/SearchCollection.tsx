@@ -1,30 +1,28 @@
-import type { CollectionEntry } from "astro:content"
 import { createEffect, createSignal, For, onMount } from "solid-js"
 import Fuse from "fuse.js"
 import ArrowCard from "@components/ArrowCard"
 import { cn } from "@lib/utils"
 import SearchBar from "@components/SearchBar"
 import { FUSE_OPTIONS } from "@lib/search"
+import type { CardEntry } from "@types"
 
 type Props = {
   entry_name: string
   tags: string[]
-  data: CollectionEntry<"blog">[] | CollectionEntry<'projects'>[]
+  data: CardEntry[]
 }
 
 export default function SearchCollection({ entry_name, data, tags }: Props) {
-  const coerced = data.map((entry) => entry as CollectionEntry<'blog'>);
-
   const [query, setQuery] = createSignal("");
   const [filter, setFilter] = createSignal(new Set<string>())
-  const [collection, setCollection] = createSignal<CollectionEntry<'blog'>[]>([])
+  const [collection, setCollection] = createSignal<CardEntry[]>([])
   const [descending, setDescending] = createSignal(false);
 
-  const fuse = new Fuse(coerced, FUSE_OPTIONS)
+  const fuse = new Fuse(data, FUSE_OPTIONS)
 
   createEffect(() => {
     const filtered = (query().length < 2
-      ? coerced
+      ? data
       : fuse.search(query()).map((result) => result.item)
     ).filter((entry) =>
       Array.from(filter()).every((value) =>

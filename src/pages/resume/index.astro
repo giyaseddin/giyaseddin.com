@@ -1,31 +1,21 @@
 ---
-import { getCollection } from "astro:content"
+import { getCollection, render } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import TopLayout from "@layouts/TopLayout.astro"
 import BottomLayout from "@layouts/BottomLayout.astro"
 import { WORK } from "@consts"
+import { parseWorkDate } from "@lib/utils"
 
 const collection = await getCollection("resume")
 
-collection.sort((a, b) => new Date(b.data.dateStart).getTime() - new Date(a.data.dateStart).getTime())
+collection.sort((a, b) => parseWorkDate(b.data.dateStart) - parseWorkDate(a.data.dateStart))
 
 const work = await Promise.all(
   collection.map(async (item) => {
-    const { Content } = await item.render()
+    const { Content } = await render(item)
     return { ...item, Content }
   })
 )
-
-function formatWorkDate(input: Date | string) {
-  if (typeof input === "string") return input
-
-  const month = input.toLocaleDateString("en-US", {
-    month: "short",
-  })
-
-  const year = new Date(input).getFullYear()
-  return `${month} ${year}`
-}
 ---
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
@@ -40,7 +30,7 @@ function formatWorkDate(input: Date | string) {
         work.map((entry) => (
           <li class="animate border-b border-black/10 dark:border-white/25 mt-4 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none">
             <div class="text-sm uppercase mb-4">
-              {formatWorkDate(entry.data.dateStart)} - {formatWorkDate(entry.data.dateEnd)}
+              {entry.data.dateStart} - {entry.data.dateEnd}
             </div>
             <div class="text-black dark:text-white font-semibold">
               {entry.data.company}

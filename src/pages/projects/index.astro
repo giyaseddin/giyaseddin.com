@@ -5,11 +5,12 @@ import TopLayout from "@layouts/TopLayout.astro";
 import BottomLayout from "@layouts/BottomLayout.astro";
 import SearchCollection from "@components/SearchCollection";
 import { PROJECTS } from "@consts";
-import type { CollectionEntry } from "astro:content";
+import { toCardEntry } from "@lib/utils";
 
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .map(toCardEntry);
 
 const tags = [
   ...new Set(projects.flatMap((project) => project.data.tags)),
